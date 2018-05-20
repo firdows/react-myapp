@@ -10,7 +10,10 @@ class App extends Component {
     }
 
     componentWillMount() {
-        console.log('App:will Mount')
+        //console.log('App:will Mount');
+        this
+            .txt2
+            .focus();
     }
 
     componentDidMount() {
@@ -33,13 +36,23 @@ class App extends Component {
 
                 <FbButton handleClick={this.onLike} caption="Like"/>
                 <FbButton handleClick={this.onDisLike} caption="DisLike"/>
+                <input
+                    type="text"
+                    ref={(input) => {
+                    this.txt1 = input;
+                }}/>
+                <input
+                    type="text"
+                    ref={(input) => {
+                    this.txt2 = input;
+                }}/>
             </div>
         );
     }
 
     onLike = () => {
-        this.setState(prevState => {
-            like : prevState.like + 1
+        this.setState({
+            like: this.state.like + 1
         })
     }
     onDisLike = () => {
