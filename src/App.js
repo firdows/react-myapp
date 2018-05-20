@@ -12,7 +12,10 @@ class App extends Component {
         const titleName = "App";
         return (
             <div >
-                <Header click={this.sampleFunction}/>
+                <Header>
+                    I am Header
+                </Header>
+
                 Hello React
 
                 <h4>Like : {this.state.like}</h4>

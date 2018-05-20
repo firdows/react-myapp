@@ -6,7 +6,7 @@ class Header extends Component {
         return (
             <div >
                 <h1>
-                    This is Header 
+                    {this.props.children}
                 </h1>
             </div>
         )
