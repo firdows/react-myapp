@@ -10,6 +10,10 @@ class Header extends Component {
         console.log('Header:did Mount')
     }
 
+    shouldComponentUpdate(nextPropt, nextState) {
+        return false;
+    }
+
     render() {
         console.log('Header:Render')
         return (

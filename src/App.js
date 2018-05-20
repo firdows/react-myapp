@@ -9,22 +9,23 @@ class App extends Component {
         dislike: 0
     }
 
-    componentWillMount(){
-      console.log('App:will Mount')
+    componentWillMount() {
+        console.log('App:will Mount')
     }
 
-    componentDidMount(){
-      console.log('App:did Mount')
+    componentDidMount() {
+        console.log('App:did Mount')
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('nextProps', nextProps, 'props', this.props.like)
     }
 
     render() {
-        const titleName = "App";
+        //const titleName = "App";
         return (
             <div >
-                <Header>
-                    I am Header
-                </Header>
-
+                <Header title="I am Header" like={this.state.like}/>
                 Hello React
 
                 <h4>Like : {this.state.like}</h4>
@@ -37,8 +38,8 @@ class App extends Component {
     }
 
     onLike = () => {
-        this.setState({
-            like: this.state.like + 1
+        this.setState(prevState => {
+            like : prevState.like + 1
         })
     }
     onDisLike = () => {
