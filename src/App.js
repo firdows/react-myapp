@@ -7,7 +7,8 @@ class App extends Component {
     state = {
         like: 0,
         dislike: 0,
-        data: null
+        data: null,
+        name: ''
     }
 
     componentWillMount() {
@@ -33,21 +34,32 @@ class App extends Component {
         const {data} = this.state
         return (
             <div >
-                <Header title="I am Header" /> 
-                {data && data.map(d => {
-                    return (
-                        <div key={d.id}>
-                            <div>
-                                <b>{d.title}</b>
-                            </div>
-                            <div>{d.body}</div>
-                            <hr/>
-                        </div>
-                    )
-                })}
+                <Header title="I am Header"/>
+                <form>
+                    <label>
+                        Name:
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="enter Name"
+                            defaultValue="Peter"
+                            value={this.state.name}
+                            onChange={this.handleChange}/>
+                    </label>
+                </form>
+                <button onClick={this.handleClick}>Change Text</button>
 
             </div>
         );
+    }
+
+    handleClick = e => {
+        this.setState({name: "I am React"})
+    }
+
+    handleChange = e => {
+        console.log(e.target.value)
+        this.setState({name: e.target.value})
     }
 
     onLike = () => {
