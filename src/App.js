@@ -3,9 +3,10 @@ import Header from './Header';
 
 class App extends Component {
     render() {
+        const titleName = "App"
         return (
             <div >
-                <Header title="React"/>
+                <Header title={titleName}/>
                 Hello React
             </div>
         );
