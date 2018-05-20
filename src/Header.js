@@ -19,7 +19,7 @@ class Header extends Component {
         return (
             <div >
                 <h1>
-                    {this.props.children}
+                    {this.props.title}
                 </h1>
             </div>
         )

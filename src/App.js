@@ -6,14 +6,19 @@ class App extends Component {
 
     state = {
         like: 0,
-        dislike: 0
+        dislike: 0,
+        data: null
     }
 
     componentWillMount() {
-        //console.log('App:will Mount');
-        this
-            .txt2
-            .focus();
+        console.log('App:will Mount');
+        fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
+            .then(result => result.json())
+            .then(result => this.setState(this.setState({data: result})))
+            .catch(err => {
+                console.error(err)
+            })
+
     }
 
     componentDidMount() {
@@ -25,27 +30,22 @@ class App extends Component {
     }
 
     render() {
-        //const titleName = "App";
+        const {data} = this.state
         return (
             <div >
-                <Header title="I am Header" like={this.state.like}/>
-                Hello React
+                <Header title="I am Header" /> 
+                {data && data.map(d => {
+                    return (
+                        <div key={d.id}>
+                            <div>
+                                <b>{d.title}</b>
+                            </div>
+                            <div>{d.body}</div>
+                            <hr/>
+                        </div>
+                    )
+                })}
 
-                <h4>Like : {this.state.like}</h4>
-                <h4>DisLike : {this.state.dislike}</h4>
-
-                <FbButton handleClick={this.onLike} caption="Like"/>
-                <FbButton handleClick={this.onDisLike} caption="DisLike"/>
-                <input
-                    type="text"
-                    ref={(input) => {
-                    this.txt1 = input;
-                }}/>
-                <input
-                    type="text"
-                    ref={(input) => {
-                    this.txt2 = input;
-                }}/>
             </div>
         );
     }
