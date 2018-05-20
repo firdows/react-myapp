@@ -8,6 +8,15 @@ class App extends Component {
         like: 0,
         dislike: 0
     }
+
+    componentWillMount(){
+      console.log('App:will Mount')
+    }
+
+    componentDidMount(){
+      console.log('App:did Mount')
+    }
+
     render() {
         const titleName = "App";
         return (
